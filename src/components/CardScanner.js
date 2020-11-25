@@ -34,6 +34,7 @@ function CardScanner(props) {
             })
             }
         </Select>
+        <input type="file" accept="image/*"></input>
         </FormControl>
     </div>
 
