@@ -42,7 +42,7 @@ export default class App extends Component {
       formData.append(i, file);
     });
 
-    fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/Panini - Football 2020/detect-numbers`, {
+    fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/`+this.state.selectedCollection+`/detect-numbers`, {
       method: "POST",
       body: formData,
     })
@@ -53,6 +53,10 @@ export default class App extends Component {
           numbers: [...this.state.numbers,...resultData]
         });
       });
+  };
+
+  changeCollection = (e) => {
+    this.setState({ selectedCollection: e.target.value});
   };
 
   removeImage = (id) => {
@@ -82,6 +86,7 @@ export default class App extends Component {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={this.state.selectedCollection}
+            onChange={this.changeCollection}
         >
             {
             collections.map((collection) => {
