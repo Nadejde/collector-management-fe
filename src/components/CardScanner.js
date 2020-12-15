@@ -42,7 +42,7 @@ export default class App extends Component {
       formData.append(i, file);
     });
 
-    fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/`+this.state.selectedCollection+`/detect-numbers`, {
+    fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/`+this.state.selectedCollection+`/numbers/detect`, {
       method: "POST",
       body: formData,
     })
@@ -64,6 +64,21 @@ export default class App extends Component {
       images: this.state.images.filter((image) => image.public_id !== id),
     });
   };
+
+  uploadNumbers = (e) => {
+    fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/`+this.state.selectedCollection+`/numbers`, {
+      method: "POST",
+      body: JSON.stringify({
+        numbers: this.state.numbers
+      }),
+    })
+      .then((res) => {
+        this.setState({
+          uploading: false,
+          numbers: []
+        });
+      });
+  }
 
   render() {
     const { uploading, images, numbers, collections} = this.state;
@@ -103,7 +118,7 @@ export default class App extends Component {
           fullWidth
           value={numbers}
         />
-         <Button variant="contained" color="primary">Upload</Button>
+         <Button variant="contained" color="primary" onClick={this.uploadNumbers}>Upload</Button>
       </div>
     );
   }
