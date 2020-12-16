@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Spinner from './Spinner'
-import Images from './Images'
 import Buttons from './Buttons'
+import CollectionSelector from '../controls/CollectionSelector'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -95,21 +90,11 @@ export default class App extends Component {
 
     return (
       <div>
-        <FormControl>
-        <InputLabel id="demo-simple-select-label">Collection</InputLabel>
-        <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={this.state.selectedCollection}
-            onChange={this.changeCollection}
-        >
-            {
-            collections.map((collection) => {
-                return (<MenuItem value={collection.id}>{collection.name}</MenuItem>)
-            })
-            }
-        </Select>
-        </FormControl>
+        <CollectionSelector
+          onChange={this.changeCollection}
+          value={this.state.selectedCollection}
+          colections={this.state.collections}
+          />
         <div className="buttons">{content()}</div>
         <TextField
           id="standard-multiline-flexible"

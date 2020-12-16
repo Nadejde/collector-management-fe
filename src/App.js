@@ -8,6 +8,7 @@ import {
 
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import CardScanner from "./components/CardScanner";
+import CardList from "./components/CardList";
 
 export default function App() {
   return (
@@ -15,26 +16,26 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/cardlist">
+            <CardListWrapper/>
           </Route>
           <Route path="/users">
             <Users />
           </Route>
           <Route path="/">
-            <Home />
+            <CardScannerWrapper />
           </Route>
         </Switch>
     </Router>
   );
 }
 
-function Home() {
+function CardScannerWrapper() {
   return <ResponsiveDrawer><CardScanner></CardScanner></ResponsiveDrawer>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function CardListWrapper() {
+  return <ResponsiveDrawer><CardList></CardList></ResponsiveDrawer>;
 }
 
 function Users() {

@@ -76,10 +76,10 @@ function ResponsiveDrawer(props) {
                 <ListItemText primary="Card Scanner" />
             </ListItem>
         </Link>
-        <Link to="/about">
-            <ListItem button key="About">
+        <Link to="/cardlist">
+            <ListItem button key="Card List">
                 <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary="About" />
+                <ListItemText primary="Card List" />
             </ListItem>
         </Link>
         <Link to="/users">
@@ -109,7 +109,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            Collector tool for human
           </Typography>
         </Toolbar>
       </AppBar>
