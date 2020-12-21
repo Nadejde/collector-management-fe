@@ -9,6 +9,7 @@ import {
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import CardScanner from "./components/CardScanner";
 import CardList from "./components/CardList";
+import EbayListing from "./components/EbayListing"
 
 export default function App() {
   return (
@@ -16,8 +17,11 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/ebaylisting/:id">
+            <EbayListing />
+          </Route>
           <Route path="/cardlist">
-            <CardListWrapper/>
+            <CardListWrapper />
           </Route>
           <Route path="/users">
             <Users />

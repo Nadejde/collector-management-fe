@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Collector tool for human",
+  "name": "Manage your collections!",
   "icons": [
     {
       "src": "favicon.ico",
