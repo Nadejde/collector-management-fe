@@ -31,7 +31,9 @@ export default props => {
     console.log(nrCols);
   return(
     <div>
-      <div>FREE SHIPPING!&nbsp;</div>
+      <div>FREE SHIPPING TO THE UK!&nbsp;</div>
+      <div><br/></div>
+      <div>For international orders I can check and offer custom shipping quotes if what Ebay shipping is &nbsp;</div>
         <div>NEW NUMBERS BEING ADDED ALL THE TIME! The list below is updated every day!</div>
         <div><br/></div>
         <div>These stickers are intended for people looking to complete their collection. Please be DECENT when ordering. For
