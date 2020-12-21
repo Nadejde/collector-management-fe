@@ -31,6 +31,15 @@ export default props => {
     console.log(nrCols);
   return(
     <div>
+      <div>FREE SHIPPING!&nbsp;</div>
+        <div>NEW NUMBERS BEING ADDED ALL THE TIME! The list below is updated every day!</div>
+        <div><br/></div>
+        <div>These stickers are intended for people looking to complete their collection. Please be DECENT when ordering. For
+            example if you ask for 3 of the same shiny sticker leaving me with 0 stickers left I will have to ask you choose
+            different numbers. Thank you for understanding!
+        </div>
+        <div><br/></div>
+        <div>Please choose the number of stickers you need from the drop down box and message me the numbers.&nbsp;</div> 
   <div class="ritz grid-container" dir="ltr">
     <table class="waffle" cellspacing="0" cellpadding="0">
         <tbody>
