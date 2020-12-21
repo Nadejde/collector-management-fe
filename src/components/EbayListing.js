@@ -39,7 +39,7 @@ export default props => {
             [...Array(nrCols).keys()].map((x)=>{
               return [
                 <td class="s0 softmerge" dir="ltr">
-                  <div class="softmerge-inner" >sticker no</div>
+                  <div class="softmerge-inner">number</div>
                 </td>,
                 <td class="s1" dir="ltr">count</td>
                 ]
@@ -48,14 +48,20 @@ export default props => {
           }
         </tr>
         {
-            [...Array(nrRows).keys()].map((x)=>{
+            [...Array(nrRows).keys()].map((row)=>{
               return <tr >
                   {
-                    [...Array(nrCols).keys()].map((x)=>{
-                      return [
-                        <td class="s2" dir="ltr">1</td>,
-                        <td class="s3" dir="ltr">14</td>
-                        ]
+                    [...Array(nrCols).keys()].map((col)=>{
+                      if (col*nrRows + row >= numbers.length) 
+                        return [
+                          <td class={row % 2 === 1 ? "s2":"s6"} dir="ltr"></td>,
+                          <td class={row % 2 === 1 ? "s3":"s7"} dir="ltr"></td>
+                          ]
+                      else
+                        return [
+                          <td class={row % 2 === 1 ? "s2":"s6"} dir="ltr">{numbers[col*nrRows + row].number}</td>,
+                          <td class={row % 2 === 1 ? "s3":"s7"} dir="ltr">{numbers[col*nrRows + row].count}</td>
+                          ]
                     })
                     
                   }
