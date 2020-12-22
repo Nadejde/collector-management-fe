@@ -50,7 +50,9 @@ export default class App extends Component {
           onChange={this.changeCollection}
           colections={collections}
           />
-
+        <br/><br/>
+        <a href={"/ebaylisting/" + selectedCollection} target="_blank">print ebay listing</a>
+        <br/><br/>
         <TableContainer component={Paper}>
           <Table aria-label="simple table" size="small">
             <TableHead>
