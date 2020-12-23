@@ -9,7 +9,8 @@ import {
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import CardScanner from "./components/CardScanner";
 import CardList from "./components/CardList";
-import EbayListing from "./components/EbayListing"
+import EbayListing from "./components/EbayListing";
+import OrderChecker from "./components/OrderChecker";
 
 export default function App() {
   return (
@@ -23,8 +24,8 @@ export default function App() {
           <Route path="/cardlist">
             <CardListWrapper />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/ordercheck">
+            <OrderCheckerWrapper />
           </Route>
           <Route path="/">
             <CardScannerWrapper />
@@ -34,14 +35,14 @@ export default function App() {
   );
 }
 
+function OrderCheckerWrapper() {
+  return <ResponsiveDrawer><OrderChecker></OrderChecker></ResponsiveDrawer>;
+}
+
 function CardScannerWrapper() {
   return <ResponsiveDrawer><CardScanner></CardScanner></ResponsiveDrawer>;
 }
 
 function CardListWrapper() {
   return <ResponsiveDrawer><CardList></CardList></ResponsiveDrawer>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
