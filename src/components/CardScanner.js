@@ -84,6 +84,7 @@ export default class App extends Component {
       .then((res) => {
         this.setState({
           uploading: false,
+          numbersText: "",
           numbers: [],
           open: true
         });
