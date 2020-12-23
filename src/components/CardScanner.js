@@ -4,7 +4,9 @@ import Buttons from './Buttons'
 import CollectionSelector from '../controls/CollectionSelector'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { TramRounded } from '@material-ui/icons';
 
 
 export default class App extends Component {
@@ -13,7 +15,9 @@ export default class App extends Component {
     images: [],
     collections: [],
     numbers: [],
-    selectedCollection: ""
+    numbersText: "",
+    selectedCollection: "",
+    open: false
   };
 
   componentDidMount() {
@@ -26,6 +30,14 @@ export default class App extends Component {
       console.log(resultData)
     }) // set data for the number of stars
   }
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false });
+  };
 
   onChange = (e) => {
     const files = Array.from(e.target.files);
@@ -43,8 +55,10 @@ export default class App extends Component {
     })
       .then((res) => res.json())
       .then((resultData) => {
+        console.log([...this.state.numbers,...resultData].join(','));
         this.setState({
           uploading: false,
+          numbersText: [...this.state.numbers,...resultData].join(','),
           numbers: [...this.state.numbers,...resultData]
         });
       });
@@ -64,20 +78,32 @@ export default class App extends Component {
     fetch(`https://nadejde-collector-api.azurewebsites.net/api/collections/`+this.state.selectedCollection+`/numbers`, {
       method: "POST",
       body: JSON.stringify({
-        numbers: this.state.numbers
+        numbers: this.state.numbersText.split(",")
       }),
     })
       .then((res) => {
         this.setState({
           uploading: false,
-          numbers: []
+          numbers: [],
+          open: true
         });
       });
+  }
+
+  textFieldChange = (e) => {
+    if (e.target) {
+      e.preventDefault();
+      const { target: { name, value }, } = e;
+      this.setState({numbersText: value});
+    }
   }
 
   render() {
     const { uploading, images, numbers, collections} = this.state;
 
+    const Alert = (props) => {
+      return <MuiAlert elevation={6} variant="filled" {...props} />;
+    }
    
     const content = () => {
       switch (true) {
@@ -101,9 +127,15 @@ export default class App extends Component {
           label="Multiline"
           multiline
           fullWidth
-          value={numbers}
+          value={this.state.numbersText}
+          onChange={this.textFieldChange}
         />
          <Button variant="contained" color="primary" onClick={this.uploadNumbers}>Upload</Button>
+         <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+          <Alert onClose={this.handleClose} severity="success">
+            Numbers added to inventory!
+          </Alert>
+      </Snackbar>
       </div>
     );
   }
