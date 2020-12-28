@@ -131,8 +131,10 @@ export default class App extends Component {
           value={this.state.numbersText}
           onChange={this.textFieldChange}
         />
-         <Button variant="contained" color="primary" onClick={this.uploadNumbers}>Upload</Button>
-         <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+        <Button variant="contained" color="primary" onClick={this.uploadNumbers}>Upload</Button>
+        <br/><br/>
+        <a href={"/ebaylisting/" + this.state.selectedCollection} target="_blank">print ebay listing</a>
+        <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
           <Alert onClose={this.handleClose} severity="success">
             Numbers added to inventory!
           </Alert>

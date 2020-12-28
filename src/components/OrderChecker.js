@@ -196,6 +196,8 @@ export default props => {
       />
       <Button variant="contained" color="primary" onClick={removeNumbers}>Remove Numbers from inventory</Button><br/><br/>
       <br/><br/>
+      <a href={"/ebaylisting/" + selectedCollection} target="_blank">print ebay listing</a>
+      <br/><br/>
       <div>{buildList(checkResult.found, "Available card list:")}</div>
       <div>{buildList(checkResult.missing, "Missing card list:")}</div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
