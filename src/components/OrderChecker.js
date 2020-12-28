@@ -106,6 +106,10 @@ export default props => {
     })
       .then((res) => {
         setOpen(true);
+        setOrderNumbers("");
+        setCheckResult([]);
+        setNumbersText("");
+        setNumbers([]);
       });
   }
 
