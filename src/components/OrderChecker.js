@@ -198,6 +198,7 @@ export default props => {
         fullWidth
         value={orderNumbers}
       />
+      <div>Total found: {orderNumbers.length}</div>
       <Button variant="contained" color="primary" onClick={removeNumbers}>Remove Numbers from inventory</Button><br/><br/>
       <br/><br/>
       <a href={"/ebaylisting/" + selectedCollection} target="_blank">print ebay listing</a>
